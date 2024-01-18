@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+
+	<!-- ==== tiles 를 사용하는 레이아웃(header,content,footer) 설정 시작 ==== -->
+	<definition name="main-layout-tiles"  template="/WEB-INF/tiles/layout/main-layout-tiles.jsp"> 
+		<put-attribute name="header"  value="/WEB-INF/tiles/tile_main/header.jsp" />
+		<put-attribute name="sideinfo"  value="/WEB-INF/tiles/tile_main/sideinfo.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/tile_main/footer.jsp" />
+	</definition>
+	
+	<!-- !! 중요 !! 순서가 바뀌면 안됨(* 많은것이 위에) -->
+	<definition name="maintiles.*.*.*" extends="main-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_main/{1}/{2}/{3}.jsp"/>
+	</definition>
+	<definition name="maintiles.*.*" extends="main-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_main/{1}/{2}.jsp"/>
+	</definition>
+	<definition name="maintiles.*" extends="main-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_main/{1}.jsp"/>
+	</definition>
+	
+	
+	<!-- ==== tiles 를 사용하는 레이아웃(header,content,sideinfo,footer) 설정 시작 ==== -->
+	<definition name="admin-layout-tiles"  template="/WEB-INF/tiles/layout/admin-layout-tiles.jsp"> 
+		<put-attribute name="header"  value="/WEB-INF/tiles/tile_admin/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="sideinfo"  value="/WEB-INF/tiles/tile_admin/sideinfo.jsp" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/tile_admin/footer.jsp" />
+	</definition>
+	
+	<!-- !! 중요 !! 순서가 바뀌면 안됨(* 많은것이 위에) -->
+	<definition name="admintiles.*.*.*" extends="admin-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_admin/{1}/{2}/{3}.jsp"/>
+	</definition>
+	<definition name="admintiles.*.*" extends="admin-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_admin/{1}/{2}.jsp"/>
+	</definition>
+	<definition name="admintiles.*" extends="admin-layout-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/tile_admin/{1}.jsp"/>
+	</definition>
+	
+</tiles-definitions>        
